@@ -1,10 +1,9 @@
 isPrime :: Int -> Bool
-isPrime n = is_prime' n 2
-  where
-    is_prime' n d
-      | d * d > n = True
-      | n `mod` d == 0 = False
-      | otherwise = is_prime' n (d + 1)
+isPrime n
+  | n < 2 = False
+  | n == 2 = True
+  | even n = False
+  | otherwise = all (\x -> n `mod` x /= 0) $ takeWhile (\x -> x ^ 2 <= n) primes
 
 primes :: [Int]
 primes = 2 : filter isPrime [3, 5 ..]
