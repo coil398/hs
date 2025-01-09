@@ -1,9 +1,6 @@
 egcd :: Integer -> Integer -> Integer
-egcd a b
-  | a == 0 = b
-  | b == 0 = a
-  | a > b = egcd (a `mod` b) b
-  | otherwise = egcd a (b `mod` a)
+egcd a 0 = a
+egcd a b = egcd b (a `mod` b)
 
 -- Example
 main :: IO ()
